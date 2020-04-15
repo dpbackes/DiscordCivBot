@@ -56,7 +56,7 @@ handlers.addHandler(/.*get current player for (.*)/g, async (message, matches) =
     message.reply(`current player for ${matches[1]} is ${currentPlayer}`)
 })
 
-handlers.addHandler(/.*I'm done in (.*)/g, async (message, matches) => {
+handlers.addHandler(/.*[I|i]'m done in (.*)/g, async (message, matches) => {
     const gameName = matches[1]
     const currentPlayer = await store.getCurrentPlayerForGame(gameName)
 
