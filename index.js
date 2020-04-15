@@ -4,6 +4,10 @@ const client = new Discord.Client()
 const handlers = require('./handlers')
 const store = require('./store')
 
+handlers.addHandler(/.*help/g, message => {
+    message.reply(`see the README at https://github.com/dpbackes/DiscordCivBot/blob/master/README.md`)
+})
+
 handlers.addHandler(/.*set order for (.*) to (<@.*)/g, (message, matches) => {
     let users = matches[2].split(',').map(user => user.trim())
     store.setOrderForGame(matches[1], users)

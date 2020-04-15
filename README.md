@@ -13,10 +13,12 @@ Discord Civ Bot is a simple chat bot that can be used to keep track of whose tur
 ### `get current player for <game name>`
 - Gets the current player for the specified game
 ### `I'm done in <game name>`
- - Indicate that you have finished your turn in the specified game
- - _Example_: `I'm done in first game`
+- Indicate that you have finished your turn in the specified game
+- _Example_: `I'm done in first game`
+### `help`
+- display a link to the readme so users can find the commands
 
- ## Usage
+ ## Running the server
  This is a pretty straight forward node app. Follow the instructions below to get it up and running
 
  ```
