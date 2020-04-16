@@ -8,14 +8,14 @@ handlers.addHandler(/.*help/g, message => {
     message.reply(`see the README at https://github.com/dpbackes/DiscordCivBot/blob/master/README.md`)
 })
 
-handlers.addHandler(/.*set order for (.*) to (<@.*)/g, (message, matches) => {
+handlers.addHandler(/.*set order for (.*) to (<@.*)/, (message, matches) => {
     let users = matches[2].split(',').map(user => user.trim())
     store.setOrderForGame(matches[1], users)
     store.setCurrentPlayerForGame(matches[1], users[0])
     message.reply(`order set for ${matches[1]}! ${users[0]} is up`)
 })
 
-handlers.addHandler(/.*get order for (.*)/g, async (message, matches) => {
+handlers.addHandler(/.*get order for (.*)/, async (message, matches) => {
     let order = await store.getOrderForGame(matches[1])
 
     if (!order) {
@@ -26,7 +26,7 @@ handlers.addHandler(/.*get order for (.*)/g, async (message, matches) => {
     message.reply(`the order for ${matches[1]} is ${order}`)
 })
 
-handlers.addHandler(/.*set current player for (.*) to (<@.*>)/g, async (message, matches) => {
+handlers.addHandler(/.*set current player for (.*) to (<@.*>)/, async (message, matches) => {
     const gameName = matches[1]
     const player = matches[2]
     const order = await store.getOrderForGame(gameName)
@@ -45,7 +45,7 @@ handlers.addHandler(/.*set current player for (.*) to (<@.*>)/g, async (message,
     message.reply(`current player for ${gameName} set to ${player}`)
 })
 
-handlers.addHandler(/.*get current player for (.*)/g, async (message, matches) => {
+handlers.addHandler(/.*get current player for (.*)/, async (message, matches) => {
     let currentPlayer = await store.getCurrentPlayerForGame(matches[1])
 
     if (!currentPlayer) {
@@ -56,7 +56,7 @@ handlers.addHandler(/.*get current player for (.*)/g, async (message, matches) =
     message.reply(`current player for ${matches[1]} is ${currentPlayer}`)
 })
 
-handlers.addHandler(/.*[I|i]'m done in (.*)/g, async (message, matches) => {
+handlers.addHandler(/.*[I|i]'m done in (.*)/, async (message, matches) => {
     const gameName = matches[1]
     const currentPlayer = await store.getCurrentPlayerForGame(gameName)
 
